@@ -1,0 +1,85 @@
+<%- include('./partials/header.ejs') %>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm-4 ">
+                <h2 class="text-center alert alert-success">Add New Student</h2>
+                <div class="px-4">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Name</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                placeholder="Enter name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email </label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Enter email" name="email">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Age</label>
+                            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Enter Age"
+                                name="age">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Fees</label>
+                            <input type="number" class="form-control" id="exampleInputPassword1"
+                                placeholder="Enter Fees" name="fees">
+                        </div>
+
+                        <input type="submit" class="btn btn-primary"></input>
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="col-sm-8">
+                <h2 class="text-center alert alert-warning">List of Student</h2>
+                <div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>No:</th>
+                                <th>Name:</th>
+                                <th>Email:</th>
+                                <th>Age:</th>
+                                <th>Fees:</th>
+                                <th>Action:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.forEach((item)=>{ %>
+
+                                <tr>
+                                    <td>1</td>
+                                    <td><%= item.name %>    </td>
+                                    <td><%= item.email %></td>
+                                    <td><%= item.age %></td>
+                                    <td><%= item.fees %></td>
+                                    <td>
+                                        <form action="/edit/<%= item._id %>" class="d-inline" method="">
+                                            
+                                            <button type="submit" class="btn btn-primary">Edit</button>
+                                        </form>
+                                        <form action="/delete/<%= item._id %>" class="d-inline" method="post">
+
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                                    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <%- include('./partials/header.ejs') %>
